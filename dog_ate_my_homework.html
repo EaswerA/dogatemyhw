@@ -433,6 +433,8 @@
     setTimeout(() => burst.remove(), 700);
   }
 
+  const eatingMessageDuration = 2600;
+
   function animateEating(fileEmoji) {
     if (isEating) return;
     isEating = true;
@@ -462,10 +464,12 @@
       clearInterval(nomInterval);
       setEatingFace(false);
       isEating = false;
+    }, 900);
 
+    setTimeout(() => {
       idleIndex = Math.floor(Math.random() * idleSayings.length);
       bubble.textContent = idleSayings[idleIndex];
-    }, 900);
+    }, eatingMessageDuration);
   }
 
   dogContainer.addEventListener('click', () => {
